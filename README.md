@@ -2,10 +2,10 @@
  
  **Functions:**
 
-`     Ping Of Death v1
-     Ping Of Death v2
-     SYN FLOOD 
-     UDP FLOOD `
+`    Ping Of Death v1 \n
+     Ping Of Death v2 \n
+     SYN FLOOD  \n
+     UDP FLOOD `\n
 
 
  **Fetures:**
@@ -29,7 +29,7 @@
 
 **Overview**
 
-                                      **($$$$$)                            
+                                      ($$$$$)                            
                 ($)                   ($$$$$)                   ($)      
                ($$)                   ($$$$$)                   ($$)     
               ($$)                    ($$$$$)                    ($$)    
@@ -43,23 +43,23 @@
                  ($$$$$$$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$$$$$$)      
                        ($$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$)            
                   ($$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$)**
-`    |_***************************** DDOS UNIT *********************************_|
-    |\OPTIONS                                                                   |
-    |\USE  UDPF  FOR UDP FLOOD ATTACK                                           |
-    |\USE  POD   FOR PING OF DEATH ATTACK                                       |
-    |\USE <SSS>  FOR PING OF DEATH ATTACK v2                                    |
-    |\USE  SYNF  FOR SYN FLOOD ATTACK                                           |
-    |\USE  Y  OR  N  TO ENABLE OR DISABLE IP SPOOFER                            |
-    |---------                                                                  |
-    |\EXAMPLES:                                                                 |
-    |\Usage:    ./ddos  TYPE     IP     Port   SPOOF                            |
-    |\Usage:    ./ddos  UDPF 192.168.1.1 80                                     |
-    |\Usage:    ./ddos  POD  192.168.1.1        Y                               |
-    |\Usage:    ./ddos  POD  192.168.1.1        N                               |
-    |\Usage:    ./ddos  SSS  192.168.1.1                                        |
-    |\Usage:    ./ddos  SYNF 192.168.1.1 80     Y                               |
-    |\Usage:    ./ddos  SYNF 192.168.1.1 80     N                               |
-    |_*************************************************************************_|
+`    |_***************************** DDOS UNIT *********************************_|\n
+    |\OPTIONS                                                                   |\n
+    |\USE  UDPF  FOR UDP FLOOD ATTACK                                           |\n
+    |\USE  POD   FOR PING OF DEATH ATTACK                                       |\n
+    |\USE <SSS>  FOR PING OF DEATH ATTACK v2                                    |\n
+    |\USE  SYNF  FOR SYN FLOOD ATTACK                                           |\n
+    |\USE  Y  OR  N  TO ENABLE OR DISABLE IP SPOOFER                            |\n
+    |---------                                                                  |\n
+    |\EXAMPLES:                                                                 |\n
+    |\Usage:    ./ddos  TYPE     IP     Port   SPOOF                            |\n
+    |\Usage:    ./ddos  UDPF 192.168.1.1 80                                     |\n
+    |\Usage:    ./ddos  POD  192.168.1.1        Y                               |\n
+    |\Usage:    ./ddos  POD  192.168.1.1        N                               |\n
+    |\Usage:    ./ddos  SSS  192.168.1.1                                        |\n
+    |\Usage:    ./ddos  SYNF 192.168.1.1 80     Y                               |\n
+    |\Usage:    ./ddos  SYNF 192.168.1.1 80     N                               |\n
+    |_*************************************************************************_|\n
 `
 
 
