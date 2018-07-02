@@ -2,10 +2,10 @@
  
  **Functions:**
 
-`    Ping Of Death v1
-     Ping Of Death v2
-     SYN FLOOD 
-     UDP FLOOD `
+`    1- Ping Of Death v1
+     2- Ping Of Death v2
+     3- SYN FLOOD 
+     4- UDP FLOOD `
 
 
  **Fetures:**
@@ -43,7 +43,7 @@
                  ($$$$$$$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$$$$$$)      
                        ($$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$)            
                   ($$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$)
-`    |_***************************** DDOS UNIT *********************************_|
+`   |_******************************DDOS UNIT**********************************_|
     |\OPTIONS                                                                   |
     |\USE  UDPF  FOR UDP FLOOD ATTACK                                           |
     |\USE  POD   FOR PING OF DEATH ATTACK                                       |
