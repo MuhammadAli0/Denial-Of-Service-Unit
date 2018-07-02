@@ -1,0 +1,4 @@
+EasyProcess==0.2.3
+scapy==2.3.3
+socketIO-client==0.6.5
+socketpool==0.5.3
